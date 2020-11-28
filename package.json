@@ -1,0 +1,19 @@
+{
+  "name": "vogel",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Madeline Cameron <maddie@qnzl.co>",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^4.3.1",
+    "node-fetch": "^2.6.1",
+    "oauth-1.0a": "^2.2.6"
+  },
+  "devDependencies": {
+    "inquirer": "^7.3.3"
+  }
+}
