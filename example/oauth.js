@@ -83,11 +83,11 @@ inquire
     } = answers
 
     const {
-      token,
-      tokenSecret
+      accessToken,
+      accessTokenSecret
     } = await getAccessToken(requestToken, verifier)
 
-    console.log(`Token:\n${token}\nToken secret:\n${tokenSecret}`)
+    console.log(`Token:\n${accessToken}\nToken secret:\n${accessTokenSecret}`)
 
     const res = await v.get('/1.1/statuses/home_timeline.json')
 

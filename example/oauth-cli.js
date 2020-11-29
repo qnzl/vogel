@@ -71,10 +71,10 @@ inquire
     } = answers
 
     const {
-      token,
-      tokenSecret
+      accessToken,
+      accessTokenSecret
     } = await getAccessToken(verifier)
 
-    console.log(`Token:\n${token}\nToken secret:\n${tokenSecret}`)
+    console.log(`Token:\n${accessToken}\nToken secret:\n${accessTokenSecret}`)
   })
 

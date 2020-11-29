@@ -229,8 +229,8 @@ class Vogel {
     }
 
     return {
-      token: oauth_token,
-      tokenSecret: oauth_token_secret
+      accessToken: oauth_token,
+      accessTokenSecret: oauth_token_secret
     }
   }
 

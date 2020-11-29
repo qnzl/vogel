@@ -19,8 +19,8 @@ If you want more in-depth and currently working examples, checkout [example/](/e
 const Vogel = require('vogel')
 
 const vogel = new Vogel({
-  oauthConsumerKey: TWITTER_CONSUMER_KEY,
-  oauthConsumerSecret: TWITTER_CONSUMER_SECRET,
+  consumerKey: TWITTER_CONSUMER_KEY,
+  consumerSecret: TWITTER_CONSUMER_SECRET,
   oauthCallback: 'http://localhost:8000/api/oauth-token'
 })
 
@@ -44,8 +44,8 @@ const {
 const Vogel = require('vogel')
 
 const vogel = new Vogel({
-  oauthConsumerKey: TWITTER_CONSUMER_KEY,
-  oauthConsumerSecret: TWITTER_CONSUMER_SECRET,
+  consumerKey: TWITTER_CONSUMER_KEY,
+  consumerSecret: TWITTER_CONSUMER_SECRET,
   accessTokenKey: TWITTER_ACCESS_TOKEN,
   accessTokenSecret: TWITTER_ACCESS_TOKEN_SECRET
 })
@@ -56,8 +56,8 @@ const vogel = new Vogel({
 const Vogel = require('vogel')
 
 const vogel = new Vogel({
-  oauthConsumerKey: TWITTER_CONSUMER_KEY,
-  oauthConsumerSecret: TWITTER_CONSUMER_SECRET,
+  consumerKey: TWITTER_CONSUMER_KEY,
+  consumerSecret: TWITTER_CONSUMER_SECRET,
   bearerToken: TWITTER_BEARER_TOKEN
 })
 ```
@@ -67,8 +67,8 @@ const vogel = new Vogel({
 const Vogel = require('vogel')
 
 const vogel = new Vogel({
-  oauthConsumerKey: TWITTER_CONSUMER_KEY,
-  oauthConsumerSecret: TWITTER_CONSUMER_SECRET,
+  consumerKey: TWITTER_CONSUMER_KEY,
+  consumerSecret: TWITTER_CONSUMER_SECRET,
   oauthCallback: 'oob'
 })
 ```

@@ -1,6 +1,6 @@
 {
   "name": "vogel",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Straight-forward Twitter API client with OAuth support",
   "main": "index.js",
   "scripts": {
