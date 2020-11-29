@@ -12,6 +12,8 @@ This README has decent documentation but if you are the type of person to love r
 
 ## Usage
 
+If you want more in-depth and currently working examples, checkout [example/](/example).
+
 ### Starting with no access token:
 ```javascript
 const Vogel = require('vogel')

@@ -6,8 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Madeline Cameron <maddie@qnzl.co>",
+  "author": "Madeline Cameron <maddie@qnzl.co>i (https://qnzl.co)",
   "license": "MIT",
+  "keywords": [
+    "twitter",
+    "twitter api",
+    "twitter oauth"
+  ],
+  "homepage": "https://github.com/qnzl/vogel",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/qnzl/vogel.git"
+  },
   "dependencies": {
     "debug": "^4.3.1",
     "node-fetch": "^2.6.1",
