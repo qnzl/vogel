@@ -2,18 +2,15 @@ const crypto = require(`crypto`)
 const OAuth = require(`oauth-1.0a`)
 const debug = require(`debug`)(`vogel:generateAuthorization`)
 
-// https://developer.twitter.com/en/docs/authentication/oauth-1-0a/creating-a-signature
 module.exports = (method, url, oauthParams, params = {}) => {
   const {
     consumerKey,
     consumerSecret,
-    callback,
+    oauthCallback,
     bearerToken,
-    token,
-    tokenSecret,
-    nonce,
+    accessToken,
+    accessTokenSecret,
     verifier,
-    version = '1.0'
   } = oauthParams
 
   if (bearerToken) {
@@ -22,6 +19,7 @@ module.exports = (method, url, oauthParams, params = {}) => {
     return `Bearer ${bearerToken}`
   }
 
+  debug(`instantiate oauth-1.0a builder`)
   const oauth = OAuth({
     consumer: {
       key: consumerKey,
@@ -36,18 +34,20 @@ module.exports = (method, url, oauthParams, params = {}) => {
     }
   })
 
+  debug(`create authorization from given oauth params and tokens`)
   const authParams = oauth.authorize({
     data: {
-      oauth_callback: callback,
+      oauth_callback: oauthCallback,
       oauth_verifier: verifier,
     },
     url,
     method,
   }, {
-    key: token,
-    secret: tokenSecret
+    key: accessToken,
+    secret: accessTokenSecret
   })
 
+  debug(`format oauth authorization into a header type and token`)
   const { Authorization } = oauth.toHeader(authParams)
 
   return Authorization

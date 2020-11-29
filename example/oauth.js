@@ -56,7 +56,8 @@ inquire
 
     v = new Vogel({
       oauthConsumerKey: TWITTER_CONSUMER_KEY,
-      oauthConsumerSecret: TWITTER_CONSUMER_KEY_SECRET
+      oauthConsumerSecret: TWITTER_CONSUMER_KEY_SECRET,
+      oauthCallback: TWITTER_CALLBACK
     })
 
     const url = await getRequestToken()

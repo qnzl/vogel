@@ -76,6 +76,6 @@ inquire
       tokenSecret
     } = await getAccessToken(verifier)
 
-    console.log(`Token:\n${token}\nToken secret:\n${tokenSecret}\n`)
+    console.log(`Token:\n${token}\nToken secret:\n${tokenSecret}`)
   })
 
