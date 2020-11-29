@@ -8,8 +8,8 @@ let {
 } = process.env
 
 let v = new Vogel({
-  oauthConsumerKey: TWITTER_CONSUMER_KEY,
-  oauthConsumerSecret: TWITTER_CONSUMER_KEY_SECRET
+  consumerKey: TWITTER_CONSUMER_KEY,
+  consumerSecret: TWITTER_CONSUMER_KEY_SECRET
 })
 
 const getRequestToken = async () => {
@@ -30,7 +30,7 @@ const prompts = [
   {
     type: `password`,
     when: Boolean(!TWITTER_CONSUMER_KEY_SECRET),
-    name: `consumerKeySecret`,
+    name: `consumerSecret`,
     message: `What is your consumer secret key?`
   },
   {
@@ -45,19 +45,16 @@ inquire
   .prompt(prompts)
   .then(async (answers) => {
     const {
-      consumerKey,
-      consumerKeySecret,
-      callback
+      consumerKey = TWITTER_CONSUMER_KEY,
+      consumerSecret = TWITTER_CONSUMER_KEY_SECRET,
+      callback = TWITTER_CALLBACK
     } = answers
 
-    TWITTER_CONSUMER_KEY = TWITTER_CONSUMER_KEY || consumerKey
-    TWITTER_CONSUMER_KEY_SECRET = TWITTER_CONSUMER_KEY_SECRET || consumerKeySecret
-    TWITTER_CALLBACK = TWITTER_CALLBACK || callback
-
+    console.log("CALL:", callback)
     v = new Vogel({
-      oauthConsumerKey: TWITTER_CONSUMER_KEY,
-      oauthConsumerSecret: TWITTER_CONSUMER_KEY_SECRET,
-      oauthCallback: TWITTER_CALLBACK
+      consumerKey,
+      consumerSecret,
+      oauthCallback: callback
     })
 
     const url = await getRequestToken()
@@ -91,4 +88,8 @@ inquire
     } = await getAccessToken(requestToken, verifier)
 
     console.log(`Token:\n${token}\nToken secret:\n${tokenSecret}`)
+
+    const res = await v.get('/1.1/statuses/home_timeline.json')
+
+    const body = await res.json()
   })

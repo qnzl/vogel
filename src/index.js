@@ -39,7 +39,7 @@ class Vogel {
 
     const {
       bearerToken,
-      onsumerKey,
+      consumerKey,
       consumerSecret,
       accessToken,
       accessTokenSecret,
@@ -141,7 +141,7 @@ class Vogel {
    * @returns {string} url - URL for a user to follow to authenticate to the app
    */
   async getRequestToken() {
-    if (!this.oauthParams.callback) {
+    if (!this.oauthParams.oauthCallback) {
       throw new Error(`To authenticate, you need to pass \`oauthCallback\` to the constructor`)
     }
 
@@ -170,8 +170,8 @@ class Vogel {
     }
 
     // Set token and tokenSecret to short-lived tokens (request tokens)
-    this.oauthParams.token = oauth_token
-    this.oauthParams.tokenSecret = oauth_token_secret
+    this.oauthParams.accessToken = oauth_token
+    this.oauthParams.accessTokenSecret = oauth_token_secret
 
     // Return URL that the user should go to to authenticate
     return `${TWITTER_API}/oauth/authorize?oauth_token=${oauth_token}`
@@ -194,7 +194,7 @@ class Vogel {
       requestToken = this.oauthParams.token
     }
 
-    this.oauthParams.token = requestToken
+    this.oauthParams.accessToken = requestToken
     this.oauthParams.verifier = verifier
 
     const res = await this.post(`/oauth/access_token`)
@@ -217,9 +217,9 @@ class Vogel {
     } = this[$parseFormResponse](body)
 
     // Set token and tokenSecret to long-living tokens (access tokens)
-    this.oauthParams.token = oauth_token
-    this.oauthParams.tokenSecret = oauth_token_secret
-    this.oauthParams.callback = null
+    this.oauthParams.accessToken = oauth_token
+    this.oauthParams.accessTokenSecret = oauth_token_secret
+    this.oauthParams.oauthCallback = null
     this.oauthParams.verifier = null
 
     // Not super useful but meh, we have the info.

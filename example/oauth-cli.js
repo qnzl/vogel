@@ -7,8 +7,8 @@ let {
 } = process.env
 
 let v = new Vogel({
-  oauthConsumerKey: TWITTER_CONSUMER_KEY,
-  oauthConsumerSecret: TWITTER_CONSUMER_KEY_SECRET,
+  consumerKey: TWITTER_CONSUMER_KEY,
+  consumerSecret: TWITTER_CONSUMER_KEY_SECRET,
   oauthCallback: `oob`
 })
 
@@ -17,6 +17,8 @@ const getRequestToken = async () => {
 }
 
 const getAccessToken = async (verifier) => {
+  // We have a parameter overload where if you only send one parameter,
+  // it assumes you are only sending the verifier
   return v.getAccessToken(verifier)
 }
 
@@ -39,16 +41,13 @@ inquire
   .prompt(prompts)
   .then(async (answers) => {
     const {
-      consumerKey,
-      consumerKeySecret
+      consumerKey = TWITTER_CONSUMER_KEY,
+      consumerKeySecret = TWITTER_CONSUMER_KEY_SECRET
     } = answers
 
-    TWITTER_CONSUMER_KEY = TWITTER_CONSUMER_KEY || consumerKey
-    TWITTER_CONSUMER_KEY_SECRET = TWITTER_CONSUMER_KEY_SECRET || consumerKeySecret
-
     v = new Vogel({
-      oauthConsumerKey: TWITTER_CONSUMER_KEY,
-      oauthConsumerSecret: TWITTER_CONSUMER_KEY_SECRET,
+      consumerKey,
+      consumerSecret,
       oauthCallback: `oob`
     })
 

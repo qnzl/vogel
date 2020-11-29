@@ -79,7 +79,11 @@ After you have authenticated either manually (`getRequestToken() -> getAccessTok
 ```javascript
 const vogel = new Vogel({ ... })
 
-const res = await vogel.get('/1.1/statuses/home_timeline')
+const res = await vogel.get('/1.1/statuses/home_timeline.json', {
+  query: {
+    count: '200'
+  }
+})
 
 // Uses node-fetch under the hood
 const body = await res.json()
