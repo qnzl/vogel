@@ -2,8 +2,6 @@
 
 Straight-forward Twitter API client with full OAuth support (Bearer, PIN and 1.0a)
 
-This README has decent documentation but if you are the type of person to love reading JSDoc-generated documents, [click here](/docs).
-
 ## Installation
 
 `npm install --save vogel`
