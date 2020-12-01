@@ -60,7 +60,7 @@ const vogel = new Vogel({
 })
 ```
 
-### CLI / PIN-based OAuth (oob )
+### CLI / PIN-based OAuth (oob)
 ```javascript
 const Vogel = require('vogel')
 
@@ -69,6 +69,16 @@ const vogel = new Vogel({
   consumerSecret: TWITTER_CONSUMER_SECRET,
   oauthCallback: 'oob'
 })
+
+const url = await vogel.getRequestToken()
+
+// User goes to url, clicks the button, user is shown a pin
+
+// Ask the user for the PIN and pass in
+const {
+  token,
+  tokenSecret
+} = await vogel.getAccessToken(pin)
 ```
 
 ## Making requests
