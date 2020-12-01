@@ -118,6 +118,8 @@ class Vogel {
         const str = `${key}=${value}`
 
         arr.push(str)
+
+        return arr
       }, [])
 
       queryString = queryStringArr.join(`&`)
