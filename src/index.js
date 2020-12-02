@@ -123,11 +123,12 @@ class Vogel {
       }, [])
 
       queryString = queryStringArr.join(`&`)
+      queryString = `?${queryString}`
     }
 
     debug(`calling ${fullUrl} with query string ${queryString}`)
 
-    return fetch(`${fullUrl}`, {
+    return fetch(`${fullUrl}${queryString}`, {
         method,
         body: JSON.stringify(body),
         headers: {
