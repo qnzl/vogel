@@ -34,12 +34,17 @@ module.exports = (method, url, oauthParams, params = {}) => {
     }
   })
 
+  if (oauthCallback) {
+    params.oauth_callback = oauthCallback
+  }
+
+  if (verifier) {
+    params.oauth_verifier = verifier
+  }
+
   debug(`create authorization from given oauth params and tokens`)
   const authParams = oauth.authorize({
-    data: {
-      oauth_callback: oauthCallback,
-      oauth_verifier: verifier,
-    },
+    data: params,
     url,
     method,
   }, {

@@ -127,12 +127,11 @@ class Vogel {
     }
 
     debug(`calling ${fullUrl} with query string ${queryString}`)
+    debug(`${fullUrl}${queryString}`, method)
 
     return fetch(`${fullUrl}${queryString}`, {
         method,
-        body: JSON.stringify(body),
         headers: {
-          [`Content-Type`]: contentType || `application/x-www-form-urlencoded`,
           [`Authorization`]: authHeaderValue
         }
       })
